@@ -6,13 +6,12 @@
 package fit5192.zz;
 
 import fit5192.zz.gui.register.RegisterGUI;
+import fit5192.zz.repository.UserRepository;
 import fit5192.zz.repository.entities.User_;
-import fit5192.zz.services.UserService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.ejb.EJB;
 import javax.swing.SwingUtilities;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *
@@ -26,7 +25,7 @@ public class A1Client implements ActionListener {
     private RegisterGUI gui;
 
     @EJB
-    private static UserService userService;
+    private static UserRepository userRepository;
 
     public A1Client() {
         
@@ -44,8 +43,14 @@ public class A1Client implements ActionListener {
 
     private void register() {
         User_ user = new User_("a@qq.com", "dylan", "12345678qwe%");
-        String res = userService.register(user);
-        System.out.println(res);
+        try {
+            userRepository.addUser(user);
+            System.out.println("YYYYYYYYY");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   
+        System.out.println("NNNNNNNNNN");
     }
 
     public void initView() {
