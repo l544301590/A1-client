@@ -44,7 +44,7 @@ public class A1Client implements ActionListener {
     private void register() {
         User_ user = new User_("a@qq.com", "dylan", "12345678qwe%");
         try {
-            userRepository.addUser(user);
+            userRepository.removeUserById(3);
             System.out.println("YYYYYYYYY");
         } catch (Exception e) {
             e.printStackTrace();
