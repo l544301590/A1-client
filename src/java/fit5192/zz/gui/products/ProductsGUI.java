@@ -5,10 +5,12 @@
  */
 package fit5192.zz.gui.products;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author dylanz
  */
-public class ProductsGUI {
+public class ProductsGUI extends JFrame {
     
 }

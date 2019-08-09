@@ -5,6 +5,7 @@
  */
 package fit5192.zz;
 
+import fit5192.zz.gui.login.LoginGUI;
 import fit5192.zz.gui.register.RegisterGUI;
 import fit5192.zz.repository.UserRepository;
 import fit5192.zz.repository.entities.User_;
@@ -17,44 +18,20 @@ import javax.swing.SwingUtilities;
  *
  * @author dylanz
  */
-public class A1Client implements ActionListener {
+public class A1Client {
 
     /**
      * @param args the command line arguments
      */
-    private RegisterGUI gui;
-
     @EJB
     private static UserRepository userRepository;
-
+    
     public A1Client() {
         
     }
 
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == gui.getRegisterButton()) {
-            this.register();
-        } else if (event.getSource() == gui.getGoLoginButton()) {
-            System.out.println("Go to Login");
-            System.exit(0);
-        }
-    }
-
-    private void register() {
-        User_ user = new User_("a@qq.com", "dylan", "12345678qwe%");
-        try {
-            userRepository.removeUserById(3);
-            System.out.println("YYYYYYYYY");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-   
-        System.out.println("NNNNNNNNNN");
-    }
-
     public void initView() {
-        this.gui = new RegisterGUI("test", this);
+        new RegisterGUI("register", userRepository);
     }
 
     public static void main(String[] args) {
