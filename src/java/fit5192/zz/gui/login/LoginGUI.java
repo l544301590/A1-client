@@ -5,6 +5,7 @@
  */
 package fit5192.zz.gui.login;
 
+import fit5192.zz.gui.products.ProductsGUI;
 import fit5192.zz.gui.register.RegisterGUI;
 import fit5192.zz.repository.UserRepository;
 import fit5192.zz.repository.entities.User_;
@@ -90,7 +91,7 @@ public class LoginGUI extends JFrame {
         try {
             List<User_> users = userRepository.searchUserByEmail(email);
             if (users.size() == 1) {
-                
+//                new ProductsGUI("products", productRepository)
             }
         } catch (Exception e) {
             e.printStackTrace();

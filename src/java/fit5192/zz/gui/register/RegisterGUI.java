@@ -71,8 +71,8 @@ public class RegisterGUI extends JFrame {
         mainPanel.add(this.passwordTextField);
         mainPanel.add(this.password2Label);
         mainPanel.add(this.password2TextField);
-        mainPanel.add(this.registerButton);
         mainPanel.add(this.goLoginButton);
+        mainPanel.add(this.registerButton);
 
         this.getContentPane().add(mainPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
