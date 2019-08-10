@@ -88,14 +88,14 @@ public class LoginGUI extends JFrame {
     private void login() {
         String email = this.emailTextField.getText();
         String password = this.passwordTextField.getText();
-        try {
-            List<User_> users = userRepository.searchUserByEmail(email);
-            if (users.size() == 1) {
+//        try {
+//            List<User_> users = userRepository.searchUserByEmail(email);
+//            if (users.size() == 1) {
 //                new ProductsGUI("products", productRepository)
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
     
     private void goRegister() {
