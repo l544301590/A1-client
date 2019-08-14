@@ -7,6 +7,9 @@ package fit5192.zz;
 
 import fit5192.zz.gui.login.LoginGUI;
 import fit5192.zz.gui.register.RegisterGUI;
+import fit5192.zz.repository.ProductRepository;
+import fit5192.zz.repository.RatingRepository;
+import fit5192.zz.repository.TransactionRepository;
 import fit5192.zz.repository.UserRepository;
 import fit5192.zz.repository.entities.User_;
 import java.awt.event.ActionEvent;
@@ -25,13 +28,19 @@ public class A1Client {
      */
     @EJB
     private static UserRepository userRepository;
+    @EJB
+    private static TransactionRepository transactionRepository;
+    @EJB
+    private static ProductRepository productRepository;
+    @EJB
+    private static RatingRepository ratingRepository;
     
     public A1Client() {
         
     }
 
     public void initView() {
-        new RegisterGUI("register", userRepository);
+        new RegisterGUI("register", userRepository,transactionRepository,productRepository,ratingRepository);
     }
 
     public static void main(String[] args) {

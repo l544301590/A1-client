@@ -7,6 +7,9 @@ package fit5192.zz.gui.login;
 
 import fit5192.zz.gui.products.ProductsGUI;
 import fit5192.zz.gui.register.RegisterGUI;
+import fit5192.zz.repository.ProductRepository;
+import fit5192.zz.repository.RatingRepository;
+import fit5192.zz.repository.TransactionRepository;
 import fit5192.zz.repository.UserRepository;
 import fit5192.zz.repository.entities.User_;
 import java.awt.GridLayout;
@@ -36,11 +39,16 @@ public class LoginGUI extends JFrame {
             loginButton;
 
     private UserRepository userRepository;
+    private TransactionRepository transactionRepository;
+    private  ProductRepository productRepository;
+    private  RatingRepository ratingRepository;
     
     public LoginGUI(String titleString, UserRepository userRepository) {
         super(titleString);
         this.userRepository = userRepository;
-        
+        this.transactionRepository = transactionRepository;
+        this.productRepository = productRepository;
+        this.ratingRepository = ratingRepository;
         // new JLabel
         this.emailLabel = new JLabel("Email");
         this.passwordLabel = new JLabel("Password");
@@ -99,7 +107,7 @@ public class LoginGUI extends JFrame {
     }
     
     private void goRegister() {
-        new RegisterGUI("register", userRepository);
+        new RegisterGUI("register", userRepository,transactionRepository,productRepository,ratingRepository);
         this.dispose();
     }
 }
