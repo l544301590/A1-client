@@ -7,21 +7,13 @@ package fit5192.zz.gui.register;
 
 import fit5192.zz.gui.login.LoginGUI;
 import fit5192.zz.repository.ProductRepository;
-import fit5192.zz.repository.RatingRepository;
-import fit5192.zz.repository.TransactionRepository;
 import fit5192.zz.repository.UserRepository;
-import fit5192.zz.repository.entities.Product;
-import fit5192.zz.repository.entities.Rating;
-import fit5192.zz.repository.entities.Transaction_;
 import fit5192.zz.repository.entities.User_;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.scene.control.TitledPane;
+import javax.ejb.EJB;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,17 +36,12 @@ public class RegisterGUI extends JFrame {
             goLoginButton;
 
     private UserRepository userRepository;
-    private TransactionRepository transactionRepository;
-    private  ProductRepository productRepository;
-    private  RatingRepository ratingRepository;
+    private ProductRepository productRepository;
 
-    public RegisterGUI(String titleString, UserRepository userRepository,TransactionRepository transactionRepository,ProductRepository productRepository,RatingRepository ratingRepository) {
+    public RegisterGUI(String titleString, UserRepository userRepository,ProductRepository productRepository) {
         super(titleString);
         this.userRepository = userRepository;
-        this.transactionRepository = transactionRepository;
         this.productRepository = productRepository;
-        this.ratingRepository = ratingRepository;
-        
         // new JLabel
         this.emailLabel = new JLabel("Email");
         this.passwordLabel = new JLabel("Password");
@@ -123,32 +110,7 @@ public class RegisterGUI extends JFrame {
     }
 
     private void goLogin() {
-        //new LoginGUI("login", userRepository);
-        //this.dispose();
-        //Date now =new Date();
-       // Product pro=new Product("strawberry",2,"berry",10,21);
-        //List<Product> proList=new ArrayList<Product>();
-        //proList.add(pro);
-        //User_ user=new User_("aaa@qq.com","12345678f.123");
-        //Rating rating=new Rating(5,pro,user);
-        Product pro=new Product();
-        pro.setCategory(1);
-        pro.setPrice(4);
-       
-
-        try {
-            //userRepository.addUser(user);
-            //productRepository.addProduct(pro);
-            //Product pro1=productRepository.searchProductById(113);
-            //proList.add(pro1);
-            //Transaction_ tran = new Transaction_(now,proList,user);
-            //transactionRepository.addTransaction(tran);
-            //ratingRepository.addRating(rating);
-            productRepository.searchProductByAnyAttribute(pro);
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-
+        new LoginGUI("login", userRepository,productRepository);
+        this.dispose();
     }
 }

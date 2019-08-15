@@ -8,8 +8,6 @@ package fit5192.zz.gui.login;
 import fit5192.zz.gui.products.ProductsGUI;
 import fit5192.zz.gui.register.RegisterGUI;
 import fit5192.zz.repository.ProductRepository;
-import fit5192.zz.repository.RatingRepository;
-import fit5192.zz.repository.TransactionRepository;
 import fit5192.zz.repository.UserRepository;
 import fit5192.zz.repository.entities.User_;
 import java.awt.GridLayout;
@@ -39,16 +37,13 @@ public class LoginGUI extends JFrame {
             loginButton;
 
     private UserRepository userRepository;
-    private TransactionRepository transactionRepository;
-    private  ProductRepository productRepository;
-    private  RatingRepository ratingRepository;
+    private ProductRepository productRepository;
     
-    public LoginGUI(String titleString, UserRepository userRepository) {
+    public LoginGUI(String titleString, UserRepository userRepository, ProductRepository productRepository) {
         super(titleString);
         this.userRepository = userRepository;
-        this.transactionRepository = transactionRepository;
         this.productRepository = productRepository;
-        this.ratingRepository = ratingRepository;
+        
         // new JLabel
         this.emailLabel = new JLabel("Email");
         this.passwordLabel = new JLabel("Password");
@@ -96,18 +91,18 @@ public class LoginGUI extends JFrame {
     private void login() {
         String email = this.emailTextField.getText();
         String password = this.passwordTextField.getText();
-//        try {
-//            List<User_> users = userRepository.searchUserByEmail(email);
-//            if (users.size() == 1) {
-//                new ProductsGUI("products", productRepository)
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            List<User_> users = userRepository.searchUserByEmail(email);
+            if (users.size() == 1) {
+                new ProductsGUI("products",productRepository,users.get(0),userRepository);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     private void goRegister() {
-        new RegisterGUI("register", userRepository,transactionRepository,productRepository,ratingRepository);
+        new RegisterGUI("register", userRepository,productRepository);
         this.dispose();
     }
 }
